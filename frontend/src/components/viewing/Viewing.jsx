@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import studentService from '../../services/students'
 import styles from './viewing.module.css'
 import Student from './Student'
@@ -6,6 +7,11 @@ import SearchBar from './Search'
 
 const Viewing = () => {
   const [students, setStudents] = useState([])
+
+  const navigate = useNavigate()
+  const navigateToRegistration = () => {
+    navigate('/')
+  }
 
   useEffect(() => {
     studentService
@@ -36,7 +42,7 @@ const Viewing = () => {
         )}
       </div>
       <div className={styles.buttonContainer}>
-        <button onClick={() => (window.location.href = '/')}>
+        <button onClick={navigateToRegistration}>
           Go to registration page
         </button>
       </div>
