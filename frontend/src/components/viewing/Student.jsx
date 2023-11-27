@@ -9,4 +9,18 @@ const Student = ({ id, name, dob }) => {
   )
 }
 
-export default Student
+const StudentList = ({ students }) => {
+  return (
+    <div className={styles.listContainer}>
+      {students.length > 0 ? (
+        students.map((student) => (
+          <Student key={student.id} name={student.name} dob={student.dob} />
+        ))
+      ) : (
+        <p>No students exist!</p>
+      )}
+    </div>
+  )
+}
+
+export default StudentList

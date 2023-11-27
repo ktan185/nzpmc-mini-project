@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import studentService from '../../services/students'
 import styles from './viewing.module.css'
-import Student from './Student'
+import StudentList from './Student'
 import SearchBar from './Search'
 
 const Viewing = () => {
@@ -32,15 +32,7 @@ const Viewing = () => {
     <div>
       <h1>Student Registry</h1>
       <SearchBar onSearchComplete={handleStudentSearch} />
-      <div className={styles.listContainer}>
-        {students.length > 0 ? (
-          students.map((student) => (
-            <Student key={student.id} name={student.name} dob={student.dob} />
-          ))
-        ) : (
-          <p>No students exist!</p>
-        )}
-      </div>
+      <StudentList students={students} />
       <div className={styles.buttonContainer}>
         <button onClick={navigateToRegistration}>
           Go to registration page
