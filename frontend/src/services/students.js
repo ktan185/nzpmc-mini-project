@@ -7,7 +7,7 @@ const getAllStudents = () => {
 }
 
 const getMatchingStudents = (studentName) => {
-  const request = axios.get(baseUrl + studentName)
+  const request = axios.get(`${baseUrl}${studentName}`)
   return request.then((response) => response.data)
 }
 
