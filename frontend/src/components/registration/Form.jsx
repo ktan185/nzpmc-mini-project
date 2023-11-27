@@ -20,7 +20,7 @@ const Form = () => {
       dob: dob,
     }
     // Post the data to MongoDB.
-    studentService.create(newStudent).then((response) => {
+    studentService.createStudent(newStudent).then((response) => {
       console.log(response)
     })
 

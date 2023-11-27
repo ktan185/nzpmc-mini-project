@@ -11,7 +11,7 @@ const getMatchingStudents = (studentName) => {
   return request.then((response) => response.data)
 }
 
-const create = (newStudent) => {
+const createStudent = (newStudent) => {
   const request = axios.post(baseUrl, newStudent)
   return request.then((response) => response.data)
 }
@@ -19,5 +19,5 @@ const create = (newStudent) => {
 export default {
   getAllStudents,
   getMatchingStudents,
-  create,
+  createStudent,
 }
