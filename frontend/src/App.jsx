@@ -1,11 +1,14 @@
 import './App.css'
+import Registration from './components/Registration.jsX'
 
 function App() {
-
   return (
-    <>
-      Hello World
-    </>
+    <div>
+      <Registration />
+      <button onClick={() => (window.location.href = '/viewing')}>
+        Go to Viewing Page
+      </button>
+    </div>
   )
 }
 
