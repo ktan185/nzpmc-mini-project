@@ -17,10 +17,20 @@ app.get('/api/students', (request, response) => {
   })
 })
 
-app.get('/api/students/:id', (request, response) => {
-  Student.findById(request.params.id).then((student) => {
-    response.json(student)
-  })
+// Finding students based on name.
+app.get('/api/students/:name', (req, res) => {
+  const nameRegex = new RegExp(req.params.name, 'i')
+  Student.find({ name: { $regex: nameRegex } })
+    .then((students) => {
+      if (students.length > 0) {
+        res.json(students)
+      } else {
+        res.status(404).send('No students found')
+      }
+    })
+    .catch((err) => {
+      res.status(500).send('Error occurred: ' + err.message)
+    })
 })
 
 app.post('/api/students', (request, response) => {
@@ -56,15 +66,3 @@ const errorHandler = (error, request, response, next) => {
   next(error)
 }
 app.use(errorHandler)
-
-app.get('/api/students/:id', (request, response, next) => {
-  Student.findById(request.params.id)
-    .then((student) => {
-      if (student) {
-        response.json(student)
-      } else {
-        response.status(404).end()
-      }
-    })
-    .catch((error) => next(error))
-})
