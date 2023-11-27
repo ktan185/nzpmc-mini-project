@@ -1,8 +1,13 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/students'
+const baseUrl = 'http://localhost:3001/api/students/'
 
 const getAllStudents = () => {
   const request = axios.get(baseUrl)
+  return request.then((response) => response.data)
+}
+
+const getMatchingStudents = (studentName) => {
+  const request = axios.get(baseUrl + studentName)
   return request.then((response) => response.data)
 }
 
@@ -13,5 +18,6 @@ const create = (newStudent) => {
 
 export default {
   getAllStudents,
+  getMatchingStudents,
   create,
 }
