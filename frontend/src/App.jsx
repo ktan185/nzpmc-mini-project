@@ -1,16 +1,16 @@
 import './App.css'
-import Registration from './components/Registration.jsX'
-import Viewing from './components/Viewing'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Registration from './components/registration/Registration'
+import Viewing from './components/viewing/Viewing'
 
 function App() {
   return (
-    <div>
-      <Registration />
-      <button onClick={() => (window.location.href = '/viewing')}>
-        Go to Viewing Page
-      </button>
-      <Viewing />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Registration />} />
+        <Route path="/viewing" element={<Viewing />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

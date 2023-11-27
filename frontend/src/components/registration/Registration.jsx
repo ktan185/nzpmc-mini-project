@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './registration.module.css'
+import studentService from '../../services/students'
 
 const Registration = () => {
   const [name, setName] = useState('')
@@ -12,6 +13,16 @@ const Registration = () => {
 
     // Inform the user that they have succesfully submitted.
     setSubmitStatus('Your registration has been submitted successfully.')
+
+    // Create the student data to send to MongoDB.
+    const newStudent = {
+      name: name,
+      dob: dob,
+    }
+    // Post the data to MongoDB.
+    studentService.create(newStudent).then((response) => {
+      console.log(response)
+    })
 
     // Reset the input fields
     setName('')
@@ -49,6 +60,12 @@ const Registration = () => {
           <p className={styles.successMessage}>{submitStatus}</p>
         )}
       </form>
+
+      <div className={styles.buttonContainer}>
+        <button onClick={() => (window.location.href = '/viewing')}>
+          Go to viewing page
+        </button>
+      </div>
     </div>
   )
 }

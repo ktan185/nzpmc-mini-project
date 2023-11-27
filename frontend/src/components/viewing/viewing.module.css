@@ -1,0 +1,16 @@
+.listContainer {
+  padding: 5px;
+  justify-content: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonContainer {
+  margin-top: 100px;
+}
+
+.student {
+  background-color: rgb(143, 143, 143);
+  border-radius: 20px;
+  color: white;
+}

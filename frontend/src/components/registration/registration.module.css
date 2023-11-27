@@ -16,9 +16,15 @@
 
 .inputField {
   width: 200px;
+  height: 30px;
 }
 
 .dobSelect {
   width: 200px;
   text-align: center;
+  height: 30px;
+}
+
+.buttonContainer {
+  margin-top: 100px;
 }
