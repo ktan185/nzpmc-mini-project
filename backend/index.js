@@ -6,6 +6,8 @@ const Student = require('./models/student')
 
 const PORT = process.env.PORT
 app.listen(PORT)
+// For production.
+// app.use(express.static('dist'))
 app.use(express.json())
 app.use(cors())
 
